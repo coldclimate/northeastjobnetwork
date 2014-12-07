@@ -52,6 +52,15 @@ var arrData =
             'Papertrail.io'
         ],
         'name': 'Robert Walker'
+    },
+    {
+        'companies': [
+            'Spontly',
+            'Orange Bus',
+            'Piranha Studios',
+            'Sage'
+        ],
+        'name': 'Tom Dancer'
     }
 ];
 
