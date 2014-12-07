@@ -12,8 +12,6 @@ var arrData =
             'bGroup',
             'Accenture'
         ],
-        
-        
     },
     {
         'companies': [
@@ -34,8 +32,17 @@ var arrData =
         'colour': 'red',
         'name': 'James Rutherford'
     },
+    {
+        'companies': [
+            'Sage',
+            'Newcastle University',
+            'Leighton',
+            'Freelance'
+        ],
+        'colour': 'purple',
+        'name': 'Alex Reid'
+    }
 ];
-
 
 // Helper functions
 
