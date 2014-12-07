@@ -45,6 +45,22 @@ var arrData =
             'Spontly'
         ],
         'name': 'Steve Jenkins'
+    },
+    {
+        'companies': [
+            'Leighton',
+            'Papertrail.io'
+        ],
+        'name': 'Robert Walker'
+    },
+    {
+        'companies': [
+            'Spontly',
+            'Orange Bus',
+            'Piranha Studios',
+            'Sage'
+        ],
+        'name': 'Tom Dancer'
     }
 ];
 
