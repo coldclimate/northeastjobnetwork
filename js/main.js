@@ -3,7 +3,6 @@ var arrData =
 [
     {
     	'name': 'Oli Wood',
-    	'colour': 'blue',
         'companies': [
             'Sage',
             'CANDDi',
@@ -19,7 +18,6 @@ var arrData =
             'bDaily',
             'bGroup'
         ],
-        'colour': 'green',
         'name': 'Chris Stainthorpe'
     },
     {
@@ -29,7 +27,6 @@ var arrData =
             'Creative Nucleus',
             'Reflections Interactive'
         ],
-        'colour': 'red',
         'name': 'James Rutherford'
     },
     {
@@ -39,7 +36,6 @@ var arrData =
             'Leighton',
             'Freelance'
         ],
-        'colour': 'purple',
         'name': 'Alex Reid'
     }
 ];
