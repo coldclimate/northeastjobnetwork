@@ -37,6 +37,14 @@ var arrData =
             'Freelance'
         ],
         'name': 'Alex Reid'
+    },
+    {
+        'companies': [
+            'Newcastle University',
+            'CANDDi',
+            'Spontly'
+        ],
+        'name': 'Steve Jenkins'
     }
 ];
 
