@@ -61,6 +61,14 @@ var arrData =
             'Sage'
         ],
         'name': 'Tom Dancer'
+    },
+    {
+        'companies': [
+            'Tombola',
+            'Azure Design',
+            'Newcastle University'
+        ],
+        'name': 'Graeme Tait'
     }
 ];
 
