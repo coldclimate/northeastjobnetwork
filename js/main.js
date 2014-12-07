@@ -48,151 +48,190 @@ var arrData =
     }
 ];
 
-// Helper functions
-
-
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
+var HashUtils = {
+    djb2: function(str){
+      var hash = 5381;
+      for (var i = 0; i < str.length; i++) {
+        hash = ((hash << 5) + hash) + str.charCodeAt(i); /* hash * 33 + c */
+      }
+      return hash;
+    },
+    hashStringToColor: function(str) {
+      var hash = this.djb2(str);
+      var r = (hash & 0xFF0000) >> 16;
+      var g = (hash & 0x00FF00) >> 8;
+      var b = hash & 0x0000FF;
+      return "#" + ("0" + r.toString(16)).substr(-2) + ("0" + g.toString(16)).substr(-2) + ("0" + b.toString(16)).substr(-2);
+    }
+};
 
-function djb2(str){
-  var hash = 5381;
-  for (var i = 0; i < str.length; i++) {
-    hash = ((hash << 5) + hash) + str.charCodeAt(i); /* hash * 33 + c */
-  }
-  return hash;
-}
+/**
+*   Generates Dataset for use with layour
+*/
+var DataSet = function(data,hu){
+    this.hu = hu;
+    this.people = [];
+    this.links = [];
+    this.nodes = [];
+    //origal functions side effect like this consider altering
+    this.generateLinks(data);
+    this.populateLinks();
+};
 
-function hashStringToColor(str) {
-  var hash = djb2(str);
-  var r = (hash & 0xFF0000) >> 16;
-  var g = (hash & 0x00FF00) >> 8;
-  var b = hash & 0x0000FF;
-  return "#" + ("0" + r.toString(16)).substr(-2) + ("0" + g.toString(16)).substr(-2) + ("0" + b.toString(16)).substr(-2);
-}
+DataSet.prototype.generateLinks = function(data){
+    var self = this;
+    data.forEach(function(set){
+        var intLength = set.companies.length;
+        self.people.push(set.name);
+        set.cleanName = set.name.toLowerCase().replace(/\W/g, '');
+        set.colour = self.hu.hashStringToColor(set.cleanName);
+        for (var i = 0; i < intLength-1; i++) {
+            self.links.push({
+                source : set.companies[i],
+                target : set.companies[i+1],
+                type : set.cleanName,
+                colour : set.colour
+            });
+        }
+    });
+};
+
+DataSet.prototype.populateLinks = function(){
+    var self = this;
+    // Compute the distinct nodes from the links.
+    this.links.forEach(function(link) {
+      link.source = self.nodes[link.source] || (self.nodes[link.source] = {name: link.source});
+      link.target = self.nodes[link.target] || (self.nodes[link.target] = {name: link.target});
+    });
+};
+
+/**
+*   Manages layout of stuff
+*/
+var GraphLayout = function(d3,target,width,height,ds){
+    this.ds = ds;
+    this.d3 = d3;
+    this.height = height;
+    this.width = width;
+    
+    this.svg = this.d3.select(target).append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    this.force = this.d3.layout.force()
+        .nodes(this.d3.values(ds.nodes))
+        .links(ds.links)
+        .size([width, height])
+        .linkDistance(60)
+        .charge(-0.001*(height*width));
+
+    //setup components
+    this.legend = this.genLegend();
+    this.marker = this.genMarker();
+    this.path = this.genPath();
+    this.circle = this.genCircle();
+    this.text = this.genText();
+
+    //run after everting is setup removing possible race condition
+    var self = this;
+    this.force.on("tick", function(){
+        //scoping is fun
+        self.tick();
+    }).start();
+};
 
 
+GraphLayout.prototype.tick = function(){
+    var linkArc = function(d) {
+        var dx = d.target.x - d.source.x;
+        var dy = d.target.y - d.source.y;
+        var dr = Math.sqrt(dx * dx + dy * dy);
+        var r = "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+        return r;
+    };
+    this.path.attr("d",linkArc);
+    var transform = function(d) {
+        return "translate(" + d.x + "," + d.y + ")";
+    }
+    this.circle.attr("transform", transform);
+    this.text.attr("transform", transform);
+};
 
+GraphLayout.prototype.genCircle = function(){
+    return this.svg.append("g").selectAll("circle")
+        .data(this.force.nodes())
+        .enter().append("circle")
+        .attr("r", 6)
+        .call(this.force.drag);
+};
 
-var links = [];
-var arrCharacters=[];
+GraphLayout.prototype.genText = function(){
+    return this.svg.append("g").selectAll("text")
+        .data(this.force.nodes())
+        .enter().append("text")
+        .attr("x", 8)
+        .attr("y", ".31em")
+        .text(function(d) { return d.name; });
+};
 
-arrData.forEach(function(set){
-  var intLength = set.companies.length;
-  arrCharacters.push(set.name);
-  set.cleanName = set.name.toLowerCase().replace(/\W/g, '');
-  set.colour = hashStringToColor(set.cleanName);
-  for (var i = 0; i < intLength-1; i++) {
-   objLink = {
-    source : set.companies[i],
-    target : set.companies[i+1],
-    type : set.cleanName,
-    colour : set.colour
-   };
-   links.push(objLink);
-}
+GraphLayout.prototype.genLegend = function(){
+    var self = this;
+    var legend = this.svg.append("g")
+        .attr("class", "legend")
+        .attr("x", this.width - 65)
+        .attr("y", 25)
+        .attr("height", 100)
+        .attr("width", 100);
+    //populate legend with data
+    legend.selectAll('g').data(arrData)
+        .enter()
+        .append('g')
+        .each(function(d, i) {
+            var g = self.d3.select(this);
+            g.append("rect")
+              .attr("x", 10)
+              .attr("y", i*25)
+              .attr("width", 10)
+              .attr("height", 10)
+              .style("fill", arrData[i].colour);
 
-});
+            g.append("text")
+              .attr("x", 30)
+              .attr("y", i * 25 + 8)
+              .attr("height",30)
+              .attr("width",100)
+              .style("fill", arrData[i].colour)
+              .text(arrData[i].name);
 
-var nodes = {};
+        });
+    return legend;
+};
 
-// Compute the distinct nodes from the links.
-links.forEach(function(link) {
-  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
-  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
-});
+GraphLayout.prototype.genPath = function(){
+    return this.svg.append("g").selectAll("path")
+        .data(this.force.links())
+        .enter().append("path")
+        .attr("style", function(d) { return "fill: " + d.colour +";"; })
+        .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+};
 
-var width = window.innerWidth,
-    height = window.innerHeight;
+GraphLayout.prototype.genMarker = function(){
+    // Per-type markers, as they don't inherit styles.
+    return this.svg.append("defs").selectAll("marker")
+        .data(this.ds.people)
+        .enter().append("marker")
+        .attr("id", function(d) { return d; })
+        .attr("viewBox", "0 -5 10 10")
+        .attr("refX", 15)
+        .attr("refY", -1.5)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 6)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M0,-5L10,0L0,5");
+};
 
-var force = d3.layout.force()
-    .nodes(d3.values(nodes))
-    .links(links)
-    .size([width, height])
-    .linkDistance(60)
-    .charge(-0.001*(window.innerHeight*window.innerWidth))
-    .on("tick", tick)
-    .start();
-
-var svg = d3.select("#hook").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-
-// Per-type markers, as they don't inherit styles.
-svg.append("defs").selectAll("marker")
-    .data(arrCharacters)
-  .enter().append("marker")
-    .attr("id", function(d) { return d; })
-    .attr("viewBox", "0 -5 10 10")
-    .attr("refX", 15)
-    .attr("refY", -1.5)
-    .attr("markerWidth", 6)
-    .attr("markerHeight", 6)
-    .attr("orient", "auto")
-  .append("path")
-    .attr("d", "M0,-5L10,0L0,5");
-
-var path = svg.append("g").selectAll("path")
-    .data(force.links())
-    .enter().append("path")
-    .attr("style", function(d) { return "fill: " + d.colour +";"; })
-    .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
-
-var circle = svg.append("g").selectAll("circle")
-    .data(force.nodes())
-  .enter().append("circle")
-    .attr("r", 6)
-    .call(force.drag);
-
-var text = svg.append("g").selectAll("text")
-    .data(force.nodes())
-  .enter().append("text")
-    .attr("x", 8)
-    .attr("y", ".31em")
-    .text(function(d) { return d.name; });
-
-// Use elliptical arc path segments to doubly-encode directionality.
-function tick() {
-  path.attr("d", linkArc);
-  circle.attr("transform", transform);
-  text.attr("transform", transform);
-}
-
-function linkArc(d) {
-  var dx = d.target.x - d.source.x,
-      dy = d.target.y - d.source.y,
-      dr = Math.sqrt(dx * dx + dy * dy);
-  return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
-}
-
-function transform(d) {
-  return "translate(" + d.x + "," + d.y + ")";
-}
-
-var legend = svg.append("g")
-    .attr("class", "legend")
-    .attr("x", window.innerWidth - 65)
-    .attr("y", 25)
-    .attr("height", 100)
-    .attr("width", 100);
-
-  legend.selectAll('g').data(arrData)
-      .enter()
-      .append('g')
-      .each(function(d, i) {
-        var g = d3.select(this);
-        g.append("rect")
-          .attr("x", 10)
-          .attr("y", i*25)
-          .attr("width", 10)
-          .attr("height", 10)
-          .style("fill", arrData[i].colour);
-        
-        g.append("text")
-          .attr("x", 30)
-          .attr("y", i * 25 + 8)
-          .attr("height",30)
-          .attr("width",100)
-          .style("fill", arrData[i].colour)
-          .text(arrData[i].name);
-
-      });
+//startup
+var dataset = new DataSet(arrData,HashUtils);
+window.currentlayout = new GraphLayout(d3,"#hook",window.innerWidth,window.innerHeight,dataset);
