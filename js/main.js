@@ -64,14 +64,22 @@ var arrData =
     },
     {
         'companies': [
-            'Enigma Interactive',
-            'Usable HQ',
-            'Freelance',
-            'Matchchat',
+            'Tombola',
+            'Azure Design',
+            'Newcastle University'
+        ],
+        'name': 'Graeme Tait'
+    },
+    {
+        'companies': [
             'Now Native',
+            'Matchchat',
+            'Freelance',
+            'Usable HQ',
+            'Enigma Interactive'  
         ],
         'name': 'Phil Hayton'
-    },
+    }
 ];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
