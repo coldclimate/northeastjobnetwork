@@ -61,7 +61,17 @@ var arrData =
             'Sage'
         ],
         'name': 'Tom Dancer'
-    }
+    },
+    {
+        'companies': [
+            'Enigma Interactive',
+            'Usable HQ',
+            'Freelance',
+            'Matchchat',
+            'Now Native',
+        ],
+        'name': 'Phil Hayton'
+    },
 ];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
