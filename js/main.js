@@ -122,7 +122,6 @@ var arrData =
         'name': 'Joanna Montgomery'
     },
     {
-<<<<<<< HEAD
         'name': 'Scott Robertson',
         'companies': [
             'PHG',
@@ -145,6 +144,15 @@ var arrData =
             'Newcastle University'
         ],
         'name': 'Alex Graham'
+},{
+        'companies': [
+            'Northumbria University',
+            'Kuju Entertainment',
+            'Midway Games',
+            'Freelance',
+            'Gospelware'
+        ],
+        'name': 'Michael Dunn'
     }
 ];
 
