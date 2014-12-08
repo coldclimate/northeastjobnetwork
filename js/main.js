@@ -120,6 +120,16 @@ var arrData =
             'Little Riot'
         ],
         'name': 'Joanna Montgomery'
+    },
+    {
+        'companies': [
+            'Northumbria University',
+            'Kuju Entertainment'
+            'Midway Games',
+            'Freelance',
+            'Gospelware'
+        ],
+        'name': 'Michael Dunn'
     }
 ];
 
