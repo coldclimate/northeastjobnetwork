@@ -124,7 +124,8 @@ var arrData =
             'Strategic Systems Solutions',
             'International Paint',
             'Waterstons',
-            'Sage'
+            'Sage',
+            'Beaumont Colson Ltd'
         ]
     }
 ];
