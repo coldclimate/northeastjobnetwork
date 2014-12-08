@@ -180,6 +180,17 @@ var arrData =
             'CANDDi'
         ],
         'name': 'Mark Hemmings'
+    }, {
+        'companies': [
+            'Magrudy Enterprises',
+            'Freelance',
+            'Union Room',
+            'Freelance',
+            'Happiest',
+            'Surreal Creative',
+            'Clicksco'
+        ],
+        'name': 'Jon Park'
     }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
