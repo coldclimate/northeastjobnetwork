@@ -89,6 +89,17 @@ var arrData =
         'name': 'Chris Neale'
     }, {
         'companies': [
+            'Clicksco',
+            'Happiest',
+            'Fueled',
+            'Codeworks',
+            'CarrotMediaLtd',
+            'Freelance'
+        ],
+        'name': 'Gavin Elliott'
+    },
+    {
+        'companies': [
             'Orange Bus',
             'Gospelware',
             'Blooie'
