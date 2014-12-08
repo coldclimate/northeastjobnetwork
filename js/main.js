@@ -76,7 +76,7 @@ var arrData =
             'Matchchat',
             'Freelance',
             'Usable HQ',
-            'Enigma Interactive'  
+            'Enigma Interactive'
         ],
         'name': 'Phil Hayton'
     },
@@ -85,7 +85,7 @@ var arrData =
             'Northumbria University',
             'Freelance',
             'Usable HQ',
-            'Beaumont Colson Ltd'  
+            'Beaumont Colson Ltd'
         ],
         'name': 'Alistair MacDonald'
     },
@@ -114,6 +114,13 @@ var arrData =
             'Givey',
             'PHG'
         ]
+    },
+    {
+      'companies': [
+        'Quintiles',
+        'Blooie'
+      ],
+      'name': 'Mark Ryan'
     }
 ];
 
@@ -183,7 +190,7 @@ var GraphLayout = function(d3,target,width,height,ds){
     this.d3 = d3;
     this.height = height;
     this.width = width;
-    
+
     this.svg = this.d3.select(target).append("svg")
         .attr("width", width)
         .attr("height", height);
