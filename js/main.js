@@ -79,6 +79,13 @@ var arrData =
             'Enigma Interactive'  
         ],
         'name': 'Phil Hayton'
+    },
+    {
+        'companies': [
+            'Freelance',
+            'CANDDi'  
+        ],
+        'name': 'Mark Hemmings'
     }
 ];
 
