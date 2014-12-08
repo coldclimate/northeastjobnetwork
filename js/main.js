@@ -2,7 +2,7 @@
 var arrData =
 [
     {
-    	'name': 'Oli Wood',
+        'name': 'Oli Wood',
         'companies': [
             'Sage',
             'CANDDi',
@@ -76,18 +76,26 @@ var arrData =
             'Matchchat',
             'Freelance',
             'Usable HQ',
-            'Enigma Interactive'  
+            'Enigma Interactive'
         ],
         'name': 'Phil Hayton'
-    }
+    },
     {
         'companies': [
             'Northumbria University',
             'Freelance',
             'Usable HQ',
-            'Beaumont Colson Ltd'  
+            'Beaumont Colson Ltd'
         ],
         'name': 'Alistair MacDonald'
+    },
+    {
+        'companies': [
+            'SoPost',
+            'C&C Design',
+            'Piranha Studios',
+        ],
+        'name': 'Jamie Curle'
     }
 ];
 
@@ -196,7 +204,7 @@ GraphLayout.prototype.tick = function(){
     this.path.attr("d",linkArc);
     var transform = function(d) {
         return "translate(" + d.x + "," + d.y + ")";
-    }
+    };
     this.circle.attr("transform", transform);
     this.text.attr("transform", transform);
 };
