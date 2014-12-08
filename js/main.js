@@ -198,7 +198,7 @@ var arrData =
             'Reflections Interactive'
         ],
         'name': 'Stuart Varrall'
-    },];
+    }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
 var HashUtils = {
