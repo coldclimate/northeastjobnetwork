@@ -1,7 +1,7 @@
 North East Job Network
 ======================
 
-A visualisation of how people in North East of England's startup community are connected. You can see what it looks like ![here](http://jobgraph.theapproachablegeek.com/).
+A visualisation of how people in North East of England's startup community are connected. You can see what it looks like [here](http://jobgraph.theapproachablegeek.com/).
 
 How to contribute
 -----------------
