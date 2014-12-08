@@ -127,6 +127,13 @@ var arrData =
             'PHG',
             'CANDDi',
             'RiffRaff'
+    ]},{
+        'name': 'Martin Bean',
+        'companies': [
+            'FUSEBOXDESIGN',
+            'dpivision.com',
+            'Bede Gaming',
+            'Freelance'
         ]
     }
 ];
