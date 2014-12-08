@@ -120,6 +120,15 @@ var arrData =
             'Little Riot'
         ],
         'name': 'Joanna Montgomery'
+    },
+    {
+        'name': 'Martin Bean',
+        'companies': [
+            'FUSEBOXDESIGN',
+            'dpivision.com',
+            'Bede Gaming',
+            'Freelance'
+        ]
     }
 ];
 
