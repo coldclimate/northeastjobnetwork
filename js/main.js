@@ -191,7 +191,14 @@ var arrData =
             'Clicksco'
         ],
         'name': 'Jon Park'
-    }];
+    }, {
+        'companies': [
+            
+            'Fluid Pixel',
+            'BubblePix'
+        ],
+        'name': 'Stuart Varrall'
+    },];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
 var HashUtils = {
