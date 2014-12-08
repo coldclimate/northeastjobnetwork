@@ -88,6 +88,14 @@ var arrData =
             'Beaumont Colson Ltd'  
         ],
         'name': 'Alistair MacDonald'
+    },
+    {
+        'companies': [
+            'Orange Bus',
+            'Gospelware',
+            'Blooie'
+        ],
+        'name': 'Jonathan Steele'
     }
 ];
 
