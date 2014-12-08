@@ -79,7 +79,7 @@ var arrData =
             'Enigma Interactive'  
         ],
         'name': 'Phil Hayton'
-    }
+    },
     {
         'companies': [
             'Northumbria University',
