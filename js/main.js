@@ -124,7 +124,7 @@ var arrData =
     {
         'companies': [
             'Northumbria University',
-            'Kuju Entertainment'
+            'Kuju Entertainment',
             'Midway Games',
             'Freelance',
             'Gospelware'
