@@ -193,9 +193,9 @@ var arrData =
         'name': 'Jon Park'
     }, {
         'companies': [
-            
+            'BubblePix',
             'Fluid Pixel',
-            'BubblePix'
+            'Reflections Interactive'
         ],
         'name': 'Stuart Varrall'
     },];
