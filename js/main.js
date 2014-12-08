@@ -116,6 +116,7 @@ var arrData =
         ]
     },
     {
+<<<<<<< HEAD
         'companies': [
             'Little Riot'
         ],
@@ -158,6 +159,18 @@ var arrData =
         'Blooie'
       ],
       'name': 'Mark Ryan'
+},{
+        'name': 'Aidan Garnish',
+        'companies': [
+            'TIR-One',
+            'Northumbrian Water',
+            'Technology Services Group',
+            'Strategic Systems Solutions',
+            'International Paint',
+            'Waterstons',
+            'Sage',
+            'Beaumont Colson Ltd'
+        ]
     }
 ];
 
