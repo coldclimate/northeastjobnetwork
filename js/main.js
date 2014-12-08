@@ -99,6 +99,14 @@ var arrData =
             'Coolblue'
         ],
         'name': 'Chris Neale'
+    },
+    {
+        'companies': [
+            'Orange Bus',
+            'Gospelware',
+            'Blooie'
+        ],
+        'name': 'Jonathan Steele'
     }
 ];
 
