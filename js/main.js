@@ -120,7 +120,16 @@ var arrData =
             'Little Riot'
         ],
         'name': 'Joanna Montgomery'
-    }
+    },
+    {
+        'companies': [
+            'Azure Design',
+            'Daykin and Storey',
+            'Freelance',        
+            'Newcastle University'
+        ],
+        'name': 'Alex Graham'
+    }    
 ];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
