@@ -91,11 +91,37 @@ var arrData =
     },
     {
         'companies': [
+            'Baryll Blue',
+            'Highford Solutions',
+            'Freelance',
+            'Usable HQ',
+            'Indigo Multimedia',
+            'Coolblue'
+        ],
+        'name': 'Chris Neale'
+    },
+    {
+        'companies': [
+            'Orange Bus',
+            'Gospelware',
+            'Blooie'
+        ],
+        'name': 'Jonathan Steele'
+    },
+    {
+        'name': 'Marc Qualie',
+        'companies': [
+            'Givey',
+            'PHG'
+        ]
+    },
+    {
+        'name': 'Jamie Curle',
+        'companies': [
             'SoPost',
             'C&C Design',
-            'Piranha Studios',
-        ],
-        'name': 'Jamie Curle'
+            'Piranha Studios'
+        ]
     }
 ];
 
