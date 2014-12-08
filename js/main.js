@@ -114,6 +114,18 @@ var arrData =
             'Givey',
             'PHG'
         ]
+    },
+    {
+        'name': 'Aidan Garnish',
+        'companies': [
+            'TIR-One',
+            'Northumbrian Water',
+            'Technology Services Group',
+            'Strategic Systems Solutions',
+            'International Paint',
+            'Waterstons',
+            'Sage'
+        ]
     }
 ];
 
