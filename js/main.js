@@ -2,7 +2,7 @@
 var arrData =
 [
     {
-    	'name': 'Oli Wood',
+        'name': 'Oli Wood',
         'companies': [
             'Sage',
             'CANDDi',
@@ -117,6 +117,7 @@ var arrData =
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         'companies': [
             'Little Riot'
         ],
@@ -170,6 +171,13 @@ var arrData =
             'Waterstons',
             'Sage',
             'Beaumont Colson Ltd'
+            ]
+        },{
+        'name': 'Jamie Curle',
+        'companies': [
+            'SoPost',
+            'C&C Design',
+            'Piranha Studios'
         ]
     }
 ];
@@ -279,7 +287,7 @@ GraphLayout.prototype.tick = function(){
     this.path.attr("d",linkArc);
     var transform = function(d) {
         return "translate(" + d.x + "," + d.y + ")";
-    }
+    };
     this.circle.attr("transform", transform);
     this.text.attr("transform", transform);
 };
