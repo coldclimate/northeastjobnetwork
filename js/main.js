@@ -113,6 +113,7 @@ var arrData =
         'companies': [
             'Givey',
             'PHG'
+        ],
     },
      {
         'companies': [
