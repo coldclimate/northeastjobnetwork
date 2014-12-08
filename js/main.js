@@ -113,6 +113,13 @@ var arrData =
         'companies': [
             'Givey',
             'PHG'
+    },
+     {
+        'companies': [
+            'Little Riot'
+        ],
+        'name': 'Joanna Montgomery'
+    },
         ]
     }
 ];
