@@ -120,6 +120,14 @@ var arrData =
             'Little Riot'
         ],
         'name': 'Joanna Montgomery'
+    },
+    {
+        'name': 'Scott Robertson',
+        'companies': [
+            'PHG',
+            'CANDDi',
+            'RiffRaff'
+        ]
     }
 ];
 
