@@ -116,8 +116,6 @@ var arrData =
         ]
     },
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         'companies': [
             'Little Riot'
         ],
@@ -178,7 +176,12 @@ var arrData =
             'SoPost',
             'C&C Design',
             'Piranha Studios'
-        ]
+        ]},{
+        'companies': [            
+            'Freelance',
+            'CANDDi'  
+        ],
+        'name': 'Mark Hemmings'
     }
 ];
 
