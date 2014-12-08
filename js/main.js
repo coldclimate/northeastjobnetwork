@@ -1,8 +1,6 @@
-
 var arrData =
-[
-    {
-    	'name': 'Oli Wood',
+    [{
+        'name': 'Oli Wood',
         'companies': [
             'Sage',
             'CANDDi',
@@ -11,16 +9,14 @@ var arrData =
             'bGroup',
             'Accenture'
         ],
-    },
-    {
+    }, {
         'companies': [
             'CustomerSure',
             'bDaily',
             'bGroup'
         ],
         'name': 'Chris Stainthorpe'
-    },
-    {
+    }, {
         'companies': [
             'Freelance',
             'Memory Merge',
@@ -28,8 +24,7 @@ var arrData =
             'Reflections Interactive'
         ],
         'name': 'James Rutherford'
-    },
-    {
+    }, {
         'companies': [
             'Sage',
             'Newcastle University',
@@ -37,23 +32,20 @@ var arrData =
             'Freelance'
         ],
         'name': 'Alex Reid'
-    },
-    {
+    }, {
         'companies': [
             'Newcastle University',
             'CANDDi',
             'Spontly'
         ],
         'name': 'Steve Jenkins'
-    },
-    {
+    }, {
         'companies': [
             'Leighton',
             'Papertrail.io'
         ],
         'name': 'Robert Walker'
-    },
-    {
+    }, {
         'companies': [
             'Spontly',
             'Orange Bus',
@@ -61,35 +53,31 @@ var arrData =
             'Sage'
         ],
         'name': 'Tom Dancer'
-    },
-    {
+    }, {
         'companies': [
             'Tombola',
             'Azure Design',
             'Newcastle University'
         ],
         'name': 'Graeme Tait'
-    },
-    {
+    }, {
         'companies': [
             'Now Native',
             'Matchchat',
             'Freelance',
             'Usable HQ',
-            'Enigma Interactive'  
+            'Enigma Interactive'
         ],
         'name': 'Phil Hayton'
-    },
-    {
+    }, {
         'companies': [
             'Northumbria University',
             'Freelance',
             'Usable HQ',
-            'Beaumont Colson Ltd'  
+            'Beaumont Colson Ltd'
         ],
         'name': 'Alistair MacDonald'
-    },
-    {
+    }, {
         'companies': [
             'Baryll Blue',
             'Highford Solutions',
@@ -99,60 +87,112 @@ var arrData =
             'Coolblue'
         ],
         'name': 'Chris Neale'
-    },
-    {
+    }, {
         'companies': [
             'Orange Bus',
             'Gospelware',
             'Blooie'
         ],
         'name': 'Jonathan Steele'
-    },
-    {
+    }, {
         'name': 'Marc Qualie',
         'companies': [
             'Givey',
             'PHG'
         ]
-    },
-    {
+    }, {
         'companies': [
             'Little Riot'
         ],
         'name': 'Joanna Montgomery'
-    },
-    {
+    }, {
         'name': 'Scott Robertson',
         'companies': [
             'PHG',
             'CANDDi',
             'RiffRaff'
         ]
-    }
-];
+    }, {
+        'name': 'Martin Bean',
+        'companies': [
+            'FUSEBOXDESIGN',
+            'dpivision.com',
+            'Bede Gaming',
+            'Freelance'
+        ]
+    }, {
+
+        'companies': [
+            'Azure Design',
+            'Daykin and Storey',
+            'Freelance',
+            'Newcastle University'
+        ],
+        'name': 'Alex Graham'
+    }, {
+        'companies': [
+            'Northumbria University',
+            'Kuju Entertainment',
+            'Midway Games',
+            'Freelance',
+            'Gospelware'
+        ],
+        'name': 'Michael Dunn'
+    }, {
+        'companies': [
+            'Quintiles',
+            'Blooie'
+        ],
+        'name': 'Mark Ryan'
+    }, {
+        'name': 'Aidan Garnish',
+        'companies': [
+            'TIR-One',
+            'Northumbrian Water',
+            'Technology Services Group',
+            'Strategic Systems Solutions',
+            'International Paint',
+            'Waterstons',
+            'Sage',
+            'Beaumont Colson Ltd'
+        ]
+    }, {
+        'name': 'Jamie Curle',
+        'companies': [
+            'SoPost',
+            'C&C Design',
+            'Piranha Studios'
+        ]
+    }, {
+        'companies': [
+            'Freelance',
+            'CANDDi'
+        ],
+        'name': 'Mark Hemmings'
+    }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
 var HashUtils = {
-    djb2: function(str){
-      var hash = 5381;
-      for (var i = 0; i < str.length; i++) {
-        hash = ((hash << 5) + hash) + str.charCodeAt(i); /* hash * 33 + c */
-      }
-      return hash;
+    djb2: function(str) {
+        var hash = 5381;
+        for (var i = 0; i < str.length; i++) {
+            hash = ((hash << 5) + hash) + str.charCodeAt(i); /* hash * 33 + c */
+        }
+        return hash;
     },
     hashStringToColor: function(str) {
-      var hash = this.djb2(str);
-      var r = (hash & 0xFF0000) >> 16;
-      var g = (hash & 0x00FF00) >> 8;
-      var b = hash & 0x0000FF;
-      return "#" + ("0" + r.toString(16)).substr(-2) + ("0" + g.toString(16)).substr(-2) + ("0" + b.toString(16)).substr(-2);
+        var hash = this.djb2(str);
+        var r = (hash & 0xFF0000) >> 16;
+        var g = (hash & 0x00FF00) >> 8;
+        var b = hash & 0x0000FF;
+        return "#" + ("0" + r.toString(16)).substr(-2) + ("0" + g.toString(16)).substr(-2) + ("0" + b.toString(16)).substr(-2);
     }
 };
 
 /**
-*   Generates Dataset for use with layour
-*/
-var DataSet = function(data,hu){
+ *   Generates Dataset for use with layour
+ */
+var DataSet = function(data, hu) {
     this.hu = hu;
     this.people = [];
     this.links = [];
@@ -162,42 +202,46 @@ var DataSet = function(data,hu){
     this.populateLinks();
 };
 
-DataSet.prototype.generateLinks = function(data){
+DataSet.prototype.generateLinks = function(data) {
     var self = this;
-    data.forEach(function(set){
+    data.forEach(function(set) {
         var intLength = set.companies.length;
         self.people.push(set.name);
         set.cleanName = set.name.toLowerCase().replace(/\W/g, '');
         set.colour = self.hu.hashStringToColor(set.cleanName);
-        for (var i = 0; i < intLength-1; i++) {
+        for (var i = 0; i < intLength - 1; i++) {
             self.links.push({
-                source : set.companies[i],
-                target : set.companies[i+1],
-                type : set.cleanName,
-                colour : set.colour
+                source: set.companies[i],
+                target: set.companies[i + 1],
+                type: set.cleanName,
+                colour: set.colour
             });
         }
     });
 };
 
-DataSet.prototype.populateLinks = function(){
+DataSet.prototype.populateLinks = function() {
     var self = this;
     // Compute the distinct nodes from the links.
     this.links.forEach(function(link) {
-      link.source = self.nodes[link.source] || (self.nodes[link.source] = {name: link.source});
-      link.target = self.nodes[link.target] || (self.nodes[link.target] = {name: link.target});
+        link.source = self.nodes[link.source] || (self.nodes[link.source] = {
+            name: link.source
+        });
+        link.target = self.nodes[link.target] || (self.nodes[link.target] = {
+            name: link.target
+        });
     });
 };
 
 /**
-*   Manages layout of stuff
-*/
-var GraphLayout = function(d3,target,width,height,ds){
+ *   Manages layout of stuff
+ */
+var GraphLayout = function(d3, target, width, height, ds) {
     this.ds = ds;
     this.d3 = d3;
     this.height = height;
     this.width = width;
-    
+
     this.svg = this.d3.select(target).append("svg")
         .attr("width", width)
         .attr("height", height);
@@ -207,7 +251,7 @@ var GraphLayout = function(d3,target,width,height,ds){
         .links(ds.links)
         .size([width, height])
         .linkDistance(60)
-        .charge(-0.001*(height*width));
+        .charge(-0.001 * (height * width));
 
     //setup components
     this.legend = this.genLegend();
@@ -218,14 +262,14 @@ var GraphLayout = function(d3,target,width,height,ds){
 
     //run after everting is setup removing possible race condition
     var self = this;
-    this.force.on("tick", function(){
+    this.force.on("tick", function() {
         //scoping is fun
         self.tick();
     }).start();
 };
 
 
-GraphLayout.prototype.tick = function(){
+GraphLayout.prototype.tick = function() {
     var linkArc = function(d) {
         var dx = d.target.x - d.source.x;
         var dy = d.target.y - d.source.y;
@@ -233,15 +277,15 @@ GraphLayout.prototype.tick = function(){
         var r = "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
         return r;
     };
-    this.path.attr("d",linkArc);
+    this.path.attr("d", linkArc);
     var transform = function(d) {
         return "translate(" + d.x + "," + d.y + ")";
-    }
+    };
     this.circle.attr("transform", transform);
     this.text.attr("transform", transform);
 };
 
-GraphLayout.prototype.genCircle = function(){
+GraphLayout.prototype.genCircle = function() {
     return this.svg.append("g").selectAll("circle")
         .data(this.force.nodes())
         .enter().append("circle")
@@ -249,16 +293,18 @@ GraphLayout.prototype.genCircle = function(){
         .call(this.force.drag);
 };
 
-GraphLayout.prototype.genText = function(){
+GraphLayout.prototype.genText = function() {
     return this.svg.append("g").selectAll("text")
         .data(this.force.nodes())
         .enter().append("text")
         .attr("x", 8)
         .attr("y", ".31em")
-        .text(function(d) { return d.name; });
+        .text(function(d) {
+            return d.name;
+        });
 };
 
-GraphLayout.prototype.genLegend = function(){
+GraphLayout.prototype.genLegend = function() {
     var self = this;
     var legend = this.svg.append("g")
         .attr("class", "legend")
@@ -273,38 +319,44 @@ GraphLayout.prototype.genLegend = function(){
         .each(function(d, i) {
             var g = self.d3.select(this);
             g.append("rect")
-              .attr("x", 10)
-              .attr("y", i*25)
-              .attr("width", 10)
-              .attr("height", 10)
-              .style("fill", arrData[i].colour);
+                .attr("x", 10)
+                .attr("y", i * 25)
+                .attr("width", 10)
+                .attr("height", 10)
+                .style("fill", arrData[i].colour);
 
             g.append("text")
-              .attr("x", 30)
-              .attr("y", i * 25 + 8)
-              .attr("height",30)
-              .attr("width",100)
-              .style("fill", arrData[i].colour)
-              .text(arrData[i].name);
+                .attr("x", 30)
+                .attr("y", i * 25 + 8)
+                .attr("height", 30)
+                .attr("width", 100)
+                .style("fill", arrData[i].colour)
+                .text(arrData[i].name);
 
         });
     return legend;
 };
 
-GraphLayout.prototype.genPath = function(){
+GraphLayout.prototype.genPath = function() {
     return this.svg.append("g").selectAll("path")
         .data(this.force.links())
         .enter().append("path")
-        .attr("style", function(d) { return "fill: " + d.colour +";"; })
-        .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+        .attr("style", function(d) {
+            return "fill: " + d.colour + ";";
+        })
+        .attr("marker-end", function(d) {
+            return "url(#" + d.type + ")";
+        });
 };
 
-GraphLayout.prototype.genMarker = function(){
+GraphLayout.prototype.genMarker = function() {
     // Per-type markers, as they don't inherit styles.
     return this.svg.append("defs").selectAll("marker")
         .data(this.ds.people)
         .enter().append("marker")
-        .attr("id", function(d) { return d; })
+        .attr("id", function(d) {
+            return d;
+        })
         .attr("viewBox", "0 -5 10 10")
         .attr("refX", 15)
         .attr("refY", -1.5)
@@ -316,5 +368,5 @@ GraphLayout.prototype.genMarker = function(){
 };
 
 //startup
-var dataset = new DataSet(arrData,HashUtils);
-window.currentlayout = new GraphLayout(d3,"#hook",window.innerWidth,window.innerHeight,dataset);
+var dataset = new DataSet(arrData, HashUtils);
+window.currentlayout = new GraphLayout(d3, "#hook", window.innerWidth, window.innerHeight, dataset);
