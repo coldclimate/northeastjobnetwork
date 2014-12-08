@@ -69,6 +69,16 @@ var arrData =
             'Newcastle University'
         ],
         'name': 'Graeme Tait'
+    },
+    {
+        'companies': [
+            'Now Native',
+            'Matchchat',
+            'Freelance',
+            'Usable HQ',
+            'Enigma Interactive'  
+        ],
+        'name': 'Phil Hayton'
     }
 ];
 
