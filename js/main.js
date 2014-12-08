@@ -107,6 +107,13 @@ var arrData =
             'Blooie'
         ],
         'name': 'Jonathan Steele'
+    },
+    {
+        'name': 'Marc Qualie',
+        'companies': [
+            'Givey',
+            'PHG'
+        ]
     }
 ];
 
