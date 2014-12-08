@@ -88,6 +88,17 @@ var arrData =
             'Beaumont Colson Ltd'  
         ],
         'name': 'Alistair MacDonald'
+    },
+    {
+        'companies': [
+            'Baryll Blue',
+            'Highford Solutions',
+            'Freelance',
+            'Usable HQ',
+            'Indigo Multimedia',
+            'Coolblue'
+        ],
+        'name': 'Chris Neale'
     }
 ];
 
