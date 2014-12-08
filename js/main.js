@@ -80,6 +80,15 @@ var arrData =
         ],
         'name': 'Phil Hayton'
     }
+    {
+        'companies': [
+            'Northumbria University',
+            'Freelance',
+            'Usable HQ',
+            'Beaumont Colson Ltd'  
+        ],
+        'name': 'Alistair MacDonald'
+    }
 ];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
