@@ -197,6 +197,16 @@ var arrData =
             'Reflections Interactive'
         ],
         'name': 'Stuart Varrall'
+    },
+    {
+        'name': 'Steve Woods',
+        'companies': [
+            'Freelance',
+            'Freedom Direct Holidays Ltd',
+            'Wheaton Design Associates Ltd',
+            'TheCreativeCake Ltd',
+            'VeriSign DomainNames.com'
+        ]
     }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
