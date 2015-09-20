@@ -214,6 +214,12 @@ var arrData =
             'band-x Media',
             'Moltin'
         ]
+    }, {
+        'companies': [
+            'Leighton',
+            'Freelance'
+        ],
+        'name': 'Mario Menger'
     }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
