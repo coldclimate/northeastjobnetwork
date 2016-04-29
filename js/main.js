@@ -220,6 +220,15 @@ var arrData =
             'Freelance'
         ],
         'name': 'Mario Menger'
+    },
+    {
+        'name': 'John Gardner',
+        'companies': [
+            'Salecycle',
+            'Sage',
+            'BT',
+            'Tagish'
+        ],
     }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
