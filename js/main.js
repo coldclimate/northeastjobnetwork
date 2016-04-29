@@ -228,7 +228,7 @@ var arrData =
             'Sage',
             'BT',
             'Tagish'
-        ],
+        ]
     }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
