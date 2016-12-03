@@ -10,6 +10,7 @@ If you work in the North East of England and want to add yourself then fork the 
 
 You can test your changes by launching a local web server.  In the directory you checked out run the following (OSX and Linux)
 
+    python test.py (should run without error)
     python -m SimpleHTTPServer
 
 Then in you web browser navigate to 
