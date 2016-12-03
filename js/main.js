@@ -197,11 +197,12 @@ GraphLayout.prototype.genMarker = function() {
 
 // build the contributors list
 function dataMe(response) {
+    console.log(response);
     var people = [];
-    response.value.items[0].json.forEach(logArrayElements)
+    response.data.forEach(logArrayElements)
 
     function logArrayElements(element) {
-        people.push('<a href="http://github.com/' + element.author.login + '">' + element.author.login + '</a>');
+        people.push('<a href="http://github.com/' + element.login + '">' + element.login + '</a>');
     }
 
     document.getElementById("contributors").innerHTML = people.join();
@@ -235,6 +236,6 @@ request.send();
 
 
 var script = document.createElement('script');
-script.src = 'http://pipes.yahoo.com/pipes/pipe.run?u=https%3A%2F%2Fgithub.com%2Fcoldclimate%2Fnortheastjobnetwork%2Fgraphs%2Fcontributors-data&_id=332d9216d8910ba39e6c2577fd321a6a&_render=json&_callback=dataMe';
+script.src = 'https://api.github.com/repos/coldclimate/northeastjobnetwork/contributors?callback=dataMe';
 
 document.getElementsByTagName('head')[0].appendChild(script);
