@@ -1,226 +1,3 @@
-var arrData =
-    [{
-        'name': 'Oli Wood',
-        'companies': [
-            'Sage',
-            'CANDDi',
-            'Memory Merge',
-            'Wishli.st',
-            'bGroup',
-            'Accenture'
-        ],
-    }, {
-        'companies': [
-            'CustomerSure',
-            'bDaily',
-            'bGroup'
-        ],
-        'name': 'Chris Stainthorpe'
-    }, {
-        'companies': [
-            'Freelance',
-            'Memory Merge',
-            'Creative Nucleus',
-            'Reflections Interactive'
-        ],
-        'name': 'James Rutherford'
-    }, {
-        'companies': [
-            'Sage',
-            'Newcastle University',
-            'Leighton',
-            'Freelance'
-        ],
-        'name': 'Alex Reid'
-    }, {
-        'companies': [
-            'Newcastle University',
-            'CANDDi',
-            'Spontly'
-        ],
-        'name': 'Steve Jenkins'
-    }, {
-        'companies': [
-            'Leighton',
-            'Papertrail.io'
-        ],
-        'name': 'Robert Walker'
-    }, {
-        'companies': [
-            'Spontly',
-            'Orange Bus',
-            'Piranha Studios',
-            'Sage'
-        ],
-        'name': 'Tom Dancer'
-    }, {
-        'companies': [
-            'Tombola',
-            'Azure Design',
-            'Newcastle University'
-        ],
-        'name': 'Graeme Tait'
-    }, {
-        'companies': [
-            'Now Native',
-            'Matchchat',
-            'Freelance',
-            'Usable HQ',
-            'Enigma Interactive'
-        ],
-        'name': 'Phil Hayton'
-    }, {
-        'companies': [
-            'Northumbria University',
-            'Freelance',
-            'Usable HQ',
-            'Beaumont Colson Ltd'
-        ],
-        'name': 'Alistair MacDonald'
-    }, {
-        'companies': [
-            'Baryll Blue',
-            'Highford Solutions',
-            'Freelance',
-            'Usable HQ',
-            'Indigo Multimedia',
-            'Coolblue'
-        ],
-        'name': 'Chris Neale'
-    }, {
-        'companies': [
-            'Clicksco',
-            'Happiest',
-            'Fueled',
-            'Codeworks',
-            'CarrotMediaLtd',
-            'Freelance'
-        ],
-        'name': 'Gavin Elliott'
-    }, {
-        'companies': [
-            'Orange Bus',
-            'Gospelware',
-            'Blooie'
-        ],
-        'name': 'Jonathan Steele'
-    }, {
-        'name': 'Marc Qualie',
-        'companies': [
-            'Givey',
-            'PHG'
-        ]
-    }, {
-        'companies': [
-            'Little Riot'
-        ],
-        'name': 'Joanna Montgomery'
-    }, {
-        'name': 'Scott Robertson',
-        'companies': [
-            'PHG',
-            'CANDDi',
-            'RiffRaff'
-        ]
-    }, {
-        'name': 'Martin Bean',
-        'companies': [
-            'FUSEBOXDESIGN',
-            'dpivision.com',
-            'Bede Gaming',
-            'Freelance'
-        ]
-    }, {
-
-        'companies': [
-            'Azure Design',
-            'Daykin and Storey',
-            'Freelance',
-            'Newcastle University'
-        ],
-        'name': 'Alex Graham'
-    }, {
-        'companies': [
-            'Northumbria University',
-            'Kuju Entertainment',
-            'Midway Games',
-            'Freelance',
-            'Gospelware'
-        ],
-        'name': 'Michael Dunn'
-    }, {
-        'companies': [
-            'Quintiles',
-            'Blooie'
-        ],
-        'name': 'Mark Ryan'
-    }, {
-        'name': 'Aidan Garnish',
-        'companies': [
-            'TIR-One',
-            'Northumbrian Water',
-            'Technology Services Group',
-            'Strategic Systems Solutions',
-            'International Paint',
-            'Waterstons',
-            'Sage',
-            'Beaumont Colson Ltd'
-        ]
-    }, {
-        'name': 'Jamie Curle',
-        'companies': [
-            'SoPost',
-            'C&C Design',
-            'Piranha Studios'
-        ]
-    }, {
-        'companies': [
-            'Freelance',
-            'CANDDi'
-        ],
-        'name': 'Mark Hemmings'
-    }, {
-        'companies': [
-            'Magrudy Enterprises',
-            'Freelance',
-            'Union Room',
-            'Freelance',
-            'Happiest',
-            'Surreal Creative',
-            'Clicksco'
-        ],
-        'name': 'Jon Park'
-    }, {
-        'companies': [
-            'BubblePix',
-            'Fluid Pixel',
-            'Reflections Interactive'
-        ],
-        'name': 'Stuart Varrall'
-    },
-    {
-        'name': 'Steve Woods',
-        'companies': [
-            'Freelance',
-            'Freedom Direct Holidays Ltd',
-            'Wheaton Design Associates Ltd',
-            'TheCreativeCake Ltd',
-            'VeriSign DomainNames.com'
-        ]
-    }, {
-        'name': 'Andrew Waters',
-        'companies': [
-            'Freelance',
-            'band-x Media',
-            'Moltin'
-        ]
-    }, {
-        'companies': [
-            'Leighton',
-            'Freelance'
-        ],
-        'name': 'Mario Menger'
-    }];
 
 // Hex colours from names: https://stackoverflow.com/questions/11120840/hash-string-into-rgb-c
 var HashUtils = {
@@ -287,7 +64,7 @@ DataSet.prototype.populateLinks = function() {
 /**
  *   Manages layout of stuff
  */
-var GraphLayout = function(d3, target, width, height, ds) {
+var GraphLayout = function(arrData, d3, target, width, height, ds) {
     this.ds = ds;
     this.d3 = d3;
     this.height = height;
@@ -305,7 +82,7 @@ var GraphLayout = function(d3, target, width, height, ds) {
         .charge(-0.001 * (height * width));
 
     //setup components
-    this.legend = this.genLegend();
+    this.legend = this.genLegend(arrData);
     this.marker = this.genMarker();
     this.path = this.genPath();
     this.circle = this.genCircle();
@@ -355,7 +132,7 @@ GraphLayout.prototype.genText = function() {
         });
 };
 
-GraphLayout.prototype.genLegend = function() {
+GraphLayout.prototype.genLegend = function(arrData) {
     var self = this;
     var legend = this.svg.append("g")
         .attr("class", "legend")
@@ -418,10 +195,6 @@ GraphLayout.prototype.genMarker = function() {
         .attr("d", "M0,-5L10,0L0,5");
 };
 
-//startup
-var dataset = new DataSet(arrData, HashUtils);
-window.currentlayout = new GraphLayout(d3, "#hook", window.innerWidth, window.innerHeight, dataset);
-
 // build the contributors list
 function dataMe(response) {
     var people = [];
@@ -434,6 +207,32 @@ function dataMe(response) {
     document.getElementById("contributors").innerHTML = people.join();
 
 }
+
+
+//startup
+var request = new XMLHttpRequest();
+request.open('GET', 'people.json', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var ourData = JSON.parse(request.responseText);
+    var dataset = new DataSet(ourData, HashUtils);
+    window.currentlayout = new GraphLayout(ourData, d3, "#hook", window.innerWidth, window.innerHeight, dataset);
+
+
+  } else {
+    // We reached our target server, but it returned an error
+
+  }
+};
+
+request.onerror = function() {
+  // There was a connection error of some sort
+};
+
+request.send();
+
 
 var script = document.createElement('script');
 script.src = 'http://pipes.yahoo.com/pipes/pipe.run?u=https%3A%2F%2Fgithub.com%2Fcoldclimate%2Fnortheastjobnetwork%2Fgraphs%2Fcontributors-data&_id=332d9216d8910ba39e6c2577fd321a6a&_render=json&_callback=dataMe';
