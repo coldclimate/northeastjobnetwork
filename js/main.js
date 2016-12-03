@@ -2,6 +2,7 @@ var arrData =
     [{
         'name': 'Oli Wood',
         'companies': [
+            'SolarWinds', 
             'Sage',
             'CANDDi',
             'Memory Merge',
