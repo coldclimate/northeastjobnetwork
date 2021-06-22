@@ -1,6 +1,7 @@
 North East Job Network
 ======================
 
+![build stats](https://app.codeship.com/projects/c1dd0780-6036-0132-2c13-2696ea524dd6/status?branch=master)
 A visualisation of how people in North East of England's startup community are connected. You can see what it looks like [here](http://jobgraph.theapproachablegeek.com/).
 
 How to contribute
